@@ -3,44 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Grades</title>
+    <link href="/libs/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/Kanbas/Navigation/index.css" />
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Navigation/index.css" />
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
 </head>
 <body>
 <table>
     <tbody>
     <tr>
         <td valign="top">
-            <ul>
-                <li>
-                    <a href="/Kanbas/Account/Profile/screen.html">Account</a>
-                </li>
-                <li>
-                    <a href="">Dashboard</a>
-                </li>
-                <li>
-                    <a href="/Kanbas/Courses/Home/screen.html">Courses</a>
-                </li>
-                <li>
-                    <a href="">Calendar</a>
-                </li>
-                <li>
-                    <a href="">Inbox</a>
-                </li>
-                <li>
-                    <a href="">History</a>
-                </li>
-                <li>
-                    <a href="">Studio</a>
-                </li>
-                <li>
-                    <a href="">Commons</a>
-                </li>
-                <li>
-                    <a href="">Help</a>
-                </li>
-            </ul>
+            <div class="container text-center wd-kanbas-navigation">
+                <div class="navigation-image">
+                    <a href=""><img class= "navigation-image" src="/Kanbas/Navigation/northeastern.png" alt=""/></a>
+                </div>
+                <div class="navigation-row">
+                    <a href="/Kanbas/Account/Profile/screen.html">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        Account</a>
+                </div>
+                <div class="navigation-row wd-active">
+                    <a href=""><i class="fa fa-tachometer icon"></i>
+                        Dashboard</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="/Kanbas/Courses/Home/screen.html">
+                        <i class="fa fa-book icon" aria-hidden="true"></i>
+                        Courses</a>
+                </div>
+                <div class=" navigation-row">
+                    <a href=""><i class="fa fa-calendar icon"></i> Calendar</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-inbox icon" aria-hidden="true"></i>
+                        <br/>
+                        Inbox</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-clock-o icon" aria-hidden="true"></i>
+                        History</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-arrow-circle-right icon" aria-hidden="true"></i>
+                        Commons</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-laptop icon" aria-hidden="true"></i>
+                        Studio</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-question-circle icon" aria-hidden="true"></i>
+                        <br/>
+                        Help</a>
+                </div>
+            </div>
         </td>
         <td valign="top">
-            <ul>
+            <ul class="wd-navigation">
                 <li>
                     <a href="/Kanbas/Courses/Home/screen.html">Home</a>
                 </li>
@@ -53,7 +78,7 @@
                 <li>
                     <a href="#">Zoom Meetings</a>
                 </li>
-                <li>
+                <li class="wd-active">
                     <a href="/Kanbas/Courses/Assignments/screen.html">Assignments</a>
                 </li>
                 <li>
@@ -109,7 +134,7 @@
                 </select>
             </div>
             <hr>
-            <div>
+            <div style="display: flex; align-content: center; align-items: center">
                 <h2>
                     ASSIGNMENTS 40% of Total
                 </h2>
@@ -134,7 +159,7 @@
                 </li>
             </ul>
 
-            <div>
+            <div style="display: flex; align-content: center; align-items: center">
                 <h2>
                     QUIZZES 10% of Total
                 </h2>
@@ -158,11 +183,11 @@
                     <a href="/Kanbas/Courses/Assignments/Edit/screen.html">Q2 - ENV + HTML</a>
                 </li>
             </ul>
-            <div>
+            <div style="display: flex; align-content: center; align-items: center">
                 <h2>
                     EXAMS 20% of Total
                 </h2>
-                <select>
+                <select style="height: min-content">
                     <option selected>Edit</option>
                     <option>Edit</option>
                     <option>Speed Grader</option>
@@ -183,7 +208,7 @@
                 </li>
             </ul>
 
-            <div>
+            <div style="display: flex; align-content: center; align-items: center">
                 <h2>
                     PROJECT 30% of Total
                 </h2>
