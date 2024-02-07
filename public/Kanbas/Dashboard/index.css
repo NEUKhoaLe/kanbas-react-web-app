@@ -1,0 +1,214 @@
+.parent-div {
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+}
+
+.parent-div > .dashboard {
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+}
+
+.dashboard > .sidebar-col {
+    max-width: 200px;
+}
+
+.card-box {
+    padding: 0;
+}
+
+@media (min-width: 675px) {
+    .dashboard > .navigation-col {
+        max-width: min-content;
+        min-width: min-content;
+        padding-right: 0;
+        padding-left: 0;
+        position: fixed;
+    }
+}
+
+@media (max-width: 675px) {
+    .dashboard > .navigation-col {
+        display: none;
+    }
+}
+
+@media (max-width: 675px) {
+    .dashboard > .dashboard-col {
+        padding-left: 16px;
+        padding-right: 0;
+    }
+
+    .navigation-row-small {
+        display: flex;
+        width: 100%;
+        background: black;
+        height: 80px;
+        margin: 0;
+        justify-content: space-between;
+        color: white;
+        padding: 0 8px 0 8px;
+    }
+
+    .navigation-row-small-button {
+        color: white;
+        border: none;
+    }
+
+    .navigation-row-small-anchor {
+        color: white;
+        text-decoration: none;
+        margin: auto 0;
+    }
+
+    .navigation-row-small-anchor > .text {
+        text-align: center;
+        margin: 0;
+    }
+
+    .navigation-row-small-anchor:hover {
+        text-decoration: underline;
+    }
+
+    .navigation-row-small-icon {
+        margin: auto 0;
+    }
+
+    #kanbasCollapseDash {
+        position: fixed;
+        z-index: 10000;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .kanbas-collapse {
+        margin: 0;
+        height: 100%;
+        background: white;
+        padding-top: 48px;
+        padding-left: 24px;
+    }
+}
+
+@media (min-width: 675px) {
+    .dashboard > .dashboard-col {
+        padding-left: 116px;
+        padding-right: 0;
+    }
+
+    .kanbas-collapse {
+        display: none;
+    }
+
+    .navigation-row-small {
+        display: none;
+    }
+}
+
+.dashboard-header {
+    margin: 0;
+    min-width: 100%;
+}
+
+.dashboard-text {
+    line-height: 1.25;
+    font-size: 2.375rem;
+    font-weight: 500;
+    color: inherit;
+    padding: 8px;
+    justify-content: space-between;
+}
+
+.sub-row {
+    padding-left: 16px;
+    padding-top: 16px;
+}
+
+.dashboard-subtext {
+    line-height: 1;
+    font-size: 2rem;
+    font-weight: 500;
+    color: inherit;
+    padding: 8px 8px 8px 0;
+    justify-content: space-between;
+}
+
+@media (min-width: 675px) {
+    .dashboard-card {
+        max-width: 260px;
+        min-width: 260px;
+        margin-bottom: 32px;
+        margin-right: 32px;
+    }
+}
+
+@media (max-width: 675px) {
+    .dashboard-card {
+        max-width: 400px;
+        min-width: 400px;
+        margin-bottom: 32px;
+        margin-right: 32px;
+    }
+}
+
+.dashboard-card > .card-body {
+    width: 100%;
+}
+
+.course-image {
+    width: 100%;
+    max-height: 150px;
+}
+
+.button {
+    justify-content: center;
+}
+
+.card-anchor {
+    text-decoration: none;
+}
+
+.card-anchor:hover {
+    text-decoration: underline;
+    color: maroon;
+}
+
+.card-title {
+    color: rgb(98, 110, 123);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.description {
+    color: rgb(98, 110, 123);
+    font-size: 14px;
+    line-height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-sub-body {
+    color: rgb(98, 110, 123);
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-icon {
+    text-decoration: none;
+    color: rgb(98, 110, 123);
+}
+
+.book-icon:hover {
+    text-decoration: underline;
+    color: maroon;
+}
+
