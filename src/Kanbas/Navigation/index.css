@@ -1,0 +1,90 @@
+.wd-kanbas-navigation {
+    background-color: black;
+    list-style: none;
+    padding: 8px 0 0;
+    margin: 0;
+    width: 80px;
+    height: 100vh;
+    grid-template-rows: auto;
+    overflow-y: scroll;
+}
+
+.wd-kanbas-navigation > .navigation-row  {
+    padding: 10px;
+    font-size: 0.8em;
+    text-align: center;
+    min-width: 60px;
+    min-height: 60px;
+}
+
+.wd-kanbas-navigation > .navigation-image {
+    font-size: 0.8em;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+    margin: auto;
+}
+
+.navigation-image {
+    width: 70px;
+    height: 70px;
+}
+
+.icon {
+    color: red;
+}
+
+.wd-kanbas-navigation > .wd-active {
+    background-color: white;
+}
+.wd-kanbas-navigation > .wd-active a {
+    color: red;
+}
+.wd-kanbas-navigation a {
+    color: white;
+    text-decoration: none;
+}
+.wd-kanbas-navigation a i {
+    font-size: 2em;
+    margin-bottom: 5px;
+    outline-color: red;
+}
+
+.hidden-navigation-row {
+    margin: 16px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hidden-navigation-row a {
+    text-decoration: none;
+    color: #A3161F;
+    display: flex;
+}
+
+.hidden-navigation-row i {
+    color: #A3161F;
+    margin: auto 0;
+}
+
+.indented > .account-icon {
+    color: #807E7E;
+}
+
+.hidden-navigation-row > .indented {
+    margin-left: 24px;
+}
+
+.hidden-navigation-row > .chevron {
+    color: #222C35;
+    margin-right: 24px;
+}
+
+.hidden-navigation-row p {
+    margin: auto 16px;
+    font-weight: lighter;
+}
+
+.navigation-row-close-button {
+    color: #222C35;
+}

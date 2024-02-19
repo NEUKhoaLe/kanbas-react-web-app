@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grades</title>
+    <link rel="stylesheet" href="/Kanbas-old/styles.css" />
+    <link href="/libs/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/Kanbas-old/Navigation/index.css" />
+    <link rel="stylesheet" href="/Kanbas-old/Courses/Navigation/index.css" />
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
+</head>
+<body>
+<table>
+    <tbody>
+    <tr>
+        <td valign="top">
+            <div class="container text-center wd-kanbas-navigation">
+                <div class="navigation-image">
+                    <a href=""><img class= "navigation-image" src="/Kanbas-old/Navigation/northeastern.png" alt=""/></a>
+                </div>
+                <div class="navigation-row">
+                    <a href="/Kanbas-old/Account/Profile/screen.html">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        Account</a>
+                </div>
+                <div class="navigation-row wd-active">
+                    <a href=""><i class="fa fa-tachometer"></i>
+                        Dashboard</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="/Kanbas-old/Courses/Home/screen.html">
+                        <i class="fa fa-book icon" aria-hidden="true"></i>
+                        Courses</a>
+                </div>
+                <div class=" navigation-row">
+                    <a href=""><i class="fa fa-calendar icon"></i> Calendar</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-inbox icon" aria-hidden="true"></i>
+                        <br/>
+                        Inbox</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-clock-o icon" aria-hidden="true"></i>
+                        History</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-arrow-circle-right icon" aria-hidden="true"></i>
+                        Commons</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-laptop icon" aria-hidden="true"></i>
+                        Studio</a>
+                </div>
+                <div class="navigation-row">
+                    <a href="">
+                        <i class="fa fa-question-circle icon" aria-hidden="true"></i>
+                        <br/>
+                        Help</a>
+                </div>
+            </div>
+        </td>
+        <td valign="top">
+            <ul class="wd-navigation">
+                <li>
+                    <a href="/Kanbas-old/Courses/Home/screen.html">Home</a>
+                </li>
+                <li>
+                    <a href="#">Modules</a>
+                </li>
+                <li>
+                    <a href="#">Piazza</a>
+                </li>
+                <li>
+                    <a href="#">Zoom Meetings</a>
+                </li>
+                <li>
+                    <a href="/Kanbas-old/Courses/Assignments/screen.html">Assignments</a>
+                </li>
+                <li>
+                    <a href="#">Quizzes</a>
+                </li>
+                <li class="wd-active">
+                    <a href="/Kanbas-old/Courses/Grades/screen.html">Grades</a>
+                </li>
+                <li>
+                    <a href="#">People</a>
+                </li>
+                <li>
+                    <a href="#">Panopto Video</a>
+                </li>
+                <li>
+                    <a href="#">Discussions</a>
+                </li>
+                <li>
+                    <a href="#">Announcements</a>
+                </li>
+                <li>
+                    <a href="#">Pages</a>
+                </li>
+                <li>
+                    <a href="#">Files</a>
+                </li>
+                <li>
+                    <a href="#">Rubrics</a>
+                </li>
+                <li>
+                    <a href="#">Outcomes</a>
+                </li>
+                <li>
+                    <a href="#">Collaborations</a>
+                </li>
+                <li>
+                    <a href="#">Syllabus</a>
+                </li>
+                <li>
+                    <a href="#">Settings</a>
+                </li>
+            </ul>
+        </td>
+        <td valign="top">
+            <div>
+                <label for="grade-select">
+                    <select id="grade-select" >
+                        <option selected>
+                            Gradebook
+                        </option>
+                        <option>
+                            Option 2
+                        </option>
+                    </select>
+                </label>
+                <button>
+                    Import
+                </button>
+                <label for="export-select">
+                    <select id="export-select">
+                        <option selected>
+                            export
+                        </option>
+                        <option>
+                            export to pdf
+                        </option>
+                    </select>
+                </label>
+                <button>
+                    configure
+                </button>
+            </div>
+            <label>
+                <h2>
+                    Student Names
+                </h2>
+                <input type="text" placeholder="Search Students"/>
+            </label>
+            <label>
+                <h2>Assignment Names</h2>
+                <input type="text" placeholder="Search Assignments"/>
+            </label>
+            <button>
+                Apply Filters
+            </button>
+            <table border="1" width="100%">
+                <thead>
+                <tr>
+                    <th>
+                        <div>
+                            Student Name
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A1 SETUP
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A2 HTML
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A3 CSS
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A4 BOOTSTRAP
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A5 JAVASCRIPT
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A6 REACT
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A7 REDUX
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A8 NODE
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            A9 MONGO
+                        </div>
+                        <div>
+                            Out of 100
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        Alice Wonderland
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Alice Wonderland
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        Alice Wonderland
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Alice Wonderland
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <div>99</div>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                    <td>
+                        <input type="number" value="99"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
