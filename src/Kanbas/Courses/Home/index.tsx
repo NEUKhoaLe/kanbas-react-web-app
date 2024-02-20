@@ -1,0 +1,1 @@
+export const CourseHome = function () {};
