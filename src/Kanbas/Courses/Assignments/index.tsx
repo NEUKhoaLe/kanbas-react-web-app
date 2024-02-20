@@ -89,10 +89,10 @@ export const Assignments = function () {
                       </Link>
                       <span className={"d-flex sub-text"}>
                         <p className={"multiple-modules"}>Multiple Modules</p>
-                        <FaGripLinesVertical />
+                        <FaGripLinesVertical size={10} />
                         <p className={"due"}>Due</p>
                         <p className={"due-date"}>Oct 2 at 11:59pm</p>
-                        <FaGripLinesVertical />
+                        <FaGripLinesVertical size={10} />
                         <p className={"grade"}>100 pts</p>
                       </span>
                     </div>

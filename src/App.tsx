@@ -36,8 +36,8 @@ function App() {
       path: "/Kanbas/",
       element: <Kanbas />,
       children: [
+        { index: true, element: <Navigate to="Dashboard" replace /> },
         {
-          index: true,
           path: "Dashboard",
           element: <Dashboard />,
         },

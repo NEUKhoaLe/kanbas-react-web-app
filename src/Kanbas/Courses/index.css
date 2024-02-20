@@ -437,6 +437,7 @@
     line-height: 12px;
     align-items: center;
     color: red;
+    font-size: 10px;
 }
 
 .due {
@@ -445,6 +446,7 @@
     margin: auto;
     line-height: 12px;
     font-weight: bold;
+    font-size: 10px;
 }
 
 .due-date {
@@ -452,6 +454,7 @@
     height: min-content;
     margin: auto 0 auto 0;
     line-height: 12px;
+    font-size: 10px;
 }
 
 .grade {
@@ -459,6 +462,7 @@
     height: min-content;
     margin: auto 0 auto 0;
     line-height: 12px;
+    font-size: 10px;
 }
 
 .assignment-link {
