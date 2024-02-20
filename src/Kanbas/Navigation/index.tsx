@@ -91,7 +91,7 @@ export const HiddenKanbasNavigation: React.FC<HiddenKanbasNavigationProp> =
         </button>
         {sections.map((item, index) => {
           return (
-            <div className={"hidden-navigation-row"}>
+            <div className={"hidden-navigation-row"} key={index}>
               <Link to={`/Kanbas/${item.label}`} className={"indented"}>
                 {item.icon}
                 <p>{item.label}</p>

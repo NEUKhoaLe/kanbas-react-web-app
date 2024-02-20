@@ -4,7 +4,7 @@
     min-width: 100%;
 }
 
-@media (min-width: 755px) {
+@media (min-width: 775px) {
     .parent-div-course{
         margin: 0;
         padding: 0 24px 0 0;
@@ -60,7 +60,7 @@
     }
 }
 
-@media (max-width: 755px) {
+@media (max-width: 775px) {
     .parent-div-course{
         margin: 0;
         padding: 0 24px 0 0;
@@ -175,6 +175,24 @@
     .right-side-bar {
         display: none;
     }
+}
+
+.assignment-top-bar {
+    padding-left: 12px;
+    padding-right: 0;
+    justify-content: space-between;
+}
+
+.assignment-top-bar-right {
+    width: fit-content;
+}
+
+.assignment-search-input {
+    max-width: min-content;
+}
+
+.assignment-search-input:focus {
+    outline: 0;
 }
 
 .middle-row-top-bar-text {
@@ -325,8 +343,8 @@
 }
 
 .main-content-icons-book {
-    margin: auto 2px;
     color: green;
+    margin: auto 2px;
 }
 
 .header-content-left > .week-row-text {
@@ -406,6 +424,51 @@
     max-width: 400px;
     text-align: left;
     color: red;
+}
+
+.sub-text {
+    padding: 2px;
+}
+
+.multiple-modules {
+    max-height: min-content;
+    height: min-content;
+    margin: auto;
+    line-height: 12px;
+    align-items: center;
+    color: red;
+}
+
+.due {
+    max-height: min-content;
+    height: min-content;
+    margin: auto;
+    line-height: 12px;
+    font-weight: bold;
+}
+
+.due-date {
+    max-height: min-content;
+    height: min-content;
+    margin: auto 0 auto 0;
+    line-height: 12px;
+}
+
+.grade {
+    max-height: min-content;
+    height: min-content;
+    margin: auto 0 auto 0;
+    line-height: 12px;
+}
+
+.assignment-link {
+    font-weight: bold;
+    margin: 0;
+    justify-content: left;
+    max-width: 400px;
+    text-align: left;
+    text-decoration: none;
+    color: black;
 }
 
 .right-side-bar-text {

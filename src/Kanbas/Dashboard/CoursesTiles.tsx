@@ -14,7 +14,7 @@ export const CoursesTiles = function () {
         <div className={"d-flex flex-wrap card-box"}>
           {courses.map((item, index) => {
             return (
-              <div className={"card dashboard-card"}>
+              <div className={"card dashboard-card"} key={item.course_id}>
                 <img
                   alt={""}
                   className={"card-img-top course-image"}
