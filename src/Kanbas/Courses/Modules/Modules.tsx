@@ -1,15 +1,29 @@
-import { modules } from "../../Database";
 import { useParams } from "react-router-dom";
 import "../index.css";
-import { FaCheckCircle, FaEllipsisV, FaPlus } from "react-icons/fa";
+import { FaCheckCircle, FaEdit, FaEllipsisV, FaPlus } from "react-icons/fa";
 import { ModuleSection } from "./ModuleSection";
+import { useSelector, useDispatch } from "react-redux";
+import { addModule, updateModule, setModule } from "./reducer";
+import { KanbasState } from "../../store";
+
+interface Module {
+  name: string;
+  description: string;
+  _id: string;
+  course_id: string;
+}
 
 export const Modules = function () {
   const { course_id } = useParams();
 
-  const moduleList = modules.filter((item) => {
-    return item.course === course_id;
-  });
+  const moduleList = useSelector(
+    (state: KanbasState) => state.modulesReducer.modules,
+  );
+  const module: Module = useSelector(
+    (state: KanbasState) => state.modulesReducer.module,
+  );
+
+  const dispatch = useDispatch();
 
   return (
     <div className={"col main-course-content"}>
@@ -36,10 +50,35 @@ export const Modules = function () {
               </option>
             </select>
           </div>
-          <button className="btn course-module-button no-hover">
-            <FaPlus />
-            Module
-          </button>
+          <input
+            value={module.name}
+            placeholder={"Enter Module Name"}
+            onChange={(e) =>
+              dispatch(setModule({ ...module, name: e.target.value }))
+            }
+          ></input>
+          {!moduleList.find((item) => item._id === module._id) && (
+            <button
+              className="btn course-module-button"
+              onClick={() => {
+                dispatch(addModule({ ...module, course: course_id }));
+              }}
+            >
+              <FaPlus />
+              Module
+            </button>
+          )}
+          {moduleList.find((item) => item._id === module._id) && (
+            <button
+              onClick={() => {
+                dispatch(updateModule(module));
+              }}
+              className="btn course-module-button"
+            >
+              <FaEdit />
+              Update
+            </button>
+          )}
           <button className="btn no-hover course-home-button">
             <FaEllipsisV />
           </button>
@@ -47,9 +86,11 @@ export const Modules = function () {
       </div>
       <hr />
       <div className={"row"}>
-        {moduleList.map((item, index) => {
-          return <ModuleSection item={item} index={index} />;
-        })}
+        {moduleList
+          .filter((m) => m.course === course_id)
+          .map((item, index) => {
+            return <ModuleSection key={index} item={item} index={index} />;
+          })}
       </div>
     </div>
   );

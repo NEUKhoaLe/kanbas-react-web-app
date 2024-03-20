@@ -2,10 +2,14 @@ import {
   FaCaretDown,
   FaCaretUp,
   FaCheckCircle,
+  FaEdit,
   FaEllipsisV,
   FaPlus,
+  FaTrash,
 } from "react-icons/fa";
 import React, { useState } from "react";
+import { deleteModule, setModule } from "./reducer";
+import { useDispatch } from "react-redux";
 
 interface ModuleSectionProps {
   item:
@@ -36,6 +40,8 @@ export const ModuleSection: React.FC<ModuleSectionProps> = function ({
 }) {
   const [collapse, setCollapse] = useState(false);
 
+  const dispatch = useDispatch();
+
   return (
     <div className={"week-row"} key={index}>
       <div className={"week-row-content"}>
@@ -59,7 +65,14 @@ export const ModuleSection: React.FC<ModuleSectionProps> = function ({
         <div className={"week-row-subsection"}>
           <FaCheckCircle className={"main-content-check"} />
           <FaPlus className={"main-content-right-icons"} />
-          <FaEllipsisV className={"main-content-right-icons"} />
+          <FaEdit
+            className={"main-content-right-icons"}
+            onClick={() => dispatch(setModule(item))}
+          />
+          <FaTrash
+            className={"main-content-right-icons trash-red"}
+            onClick={() => dispatch(deleteModule(item._id))}
+          />
         </div>
       </div>
       <div className={"header"} style={{ display: collapse ? "none" : "" }}>
