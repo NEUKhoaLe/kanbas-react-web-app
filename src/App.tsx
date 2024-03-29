@@ -4,7 +4,6 @@ import HelloWorld from "./Labs/a3/HelloWorld";
 import {
   createBrowserRouter,
   Navigate,
-  Outlet,
   RouterProvider,
 } from "react-router-dom";
 import Assignment3 from "./Labs/a3";
@@ -14,6 +13,7 @@ import { Courses } from "./Kanbas/Courses";
 import { Modules } from "./Kanbas/Courses/Modules/Modules";
 import { Assignments } from "./Kanbas/Courses/Assignments";
 import { Grades } from "./Kanbas/Courses/Grades";
+import Assignment4 from "./Labs/a4";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +29,10 @@ function App() {
         {
           path: "a3/*",
           element: <Assignment3 />,
+        },
+        {
+          path: "a4/*",
+          element: <Assignment4 />,
         },
       ],
     },

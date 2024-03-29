@@ -5,6 +5,8 @@ import { FaBars, FaChevronDown } from "react-icons/fa";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { HiddenCourseNavigation } from "./Courses/Navigation/CourseNavigation";
 import { courses } from "./Database";
+import store from "./store";
+import { Provider } from "react-redux";
 
 interface Course {
   course_id: string;
@@ -29,7 +31,7 @@ function Kanbas() {
   const topTitle = pathname.split("/")[pathname.split("/").length - 1];
 
   return (
-    <>
+    <Provider store={store}>
       <div
         className="navigation-row-small"
         style={{ display: `${isOpen ? `none` : ``}` }}
@@ -83,7 +85,7 @@ function Kanbas() {
         </div>
         <Outlet />
       </div>
-    </>
+    </Provider>
   );
 }
 

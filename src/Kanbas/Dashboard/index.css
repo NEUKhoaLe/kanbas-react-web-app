@@ -212,3 +212,37 @@
     color: maroon;
 }
 
+.add-course-button {
+    background: #A3161F;
+    border: 1px solid #c7cdd1;
+    border-radius: 3px;
+    padding: 6px;
+    font-size: 16px;
+    line-height: 20px;
+    min-height: fit-content;
+    min-width: fit-content;
+    color: white;
+    width: fit-content;
+    margin: auto;
+}
+
+.add-course-button-plus {
+    margin: auto;
+}
+
+.delete-course-button {
+    background: #A3161F;
+    border: 1px solid #c7cdd1;
+    border-radius: 3px;
+    padding: 6px;
+    font-size: 16px;
+    line-height: 20px;
+    min-height: fit-content;
+    min-width: fit-content;
+    color: white;
+    width: fit-content;
+}
+
+.edit-course-input {
+    margin-right: 8px;
+}

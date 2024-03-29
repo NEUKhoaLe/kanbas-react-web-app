@@ -5,10 +5,17 @@ import { CourseNavigation } from "./Navigation/CourseNavigation";
 import { RightSideBar } from "./RightSideBar";
 import { useState } from "react";
 import { HiMiniBars3 } from "react-icons/hi2";
+import { useDispatch, useSelector } from "react-redux";
+import { KanbasState } from "../store";
 
 export const Courses = function () {
   const { course_id } = useParams();
-  const course = courses.find((item) => item.course_id === course_id);
+  const courses = useSelector(
+    (state: KanbasState) => state.courseReducer.courses,
+  );
+  const course = useSelector(
+    (state: KanbasState) => state.courseReducer.course,
+  );
   const { pathname } = useLocation();
   const [showCourseNavigation, setShowCourseNavigation] = useState(true);
 

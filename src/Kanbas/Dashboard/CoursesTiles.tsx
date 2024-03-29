@@ -1,14 +1,30 @@
 import "./index.css";
-import { courses } from "../Database";
+
 import { Link } from "react-router-dom";
 import { FaBook } from "react-icons/fa";
+import React from "react";
+import { addNewCourse, setCourse, updateCourse, deleteCourse } from "./reducer";
+import { useDispatch } from "react-redux";
 
-export const CoursesTiles = function () {
+interface Course {
+  course_id: string;
+  filename: string;
+  title: string;
+  description: string;
+  "sub-body": string;
+}
+
+interface CourseTilesProps {
+  courses: Course[];
+}
+
+export const CoursesTiles: React.FC<CourseTilesProps> = function ({ courses }) {
+  const dispatch = useDispatch();
   return (
     <div className={"container"}>
       <div className={"row sub-row"}>
         <span className="col d-flex dashboard-subtext">
-          Published Courses (7)
+          Published Courses ({courses.length})
         </span>
         <hr />
         <div className={"d-flex flex-wrap card-box"}>
@@ -39,6 +55,24 @@ export const CoursesTiles = function () {
                     className={"book-icon"}
                   >
                     <FaBook className={""} />
+                    <button
+                      className="delete-course-button"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        dispatch(setCourse(item));
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="delete-course-button"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        dispatch(deleteCourse(item.course_id));
+                      }}
+                    >
+                      Delete
+                    </button>
                   </Link>
                 </div>
               </div>
