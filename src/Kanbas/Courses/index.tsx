@@ -16,14 +16,15 @@ export const Courses = function () {
   );
 
   const dispatch = useDispatch();
+  const API_BASE = process.env.REACT_APP_API_BASE;
 
   const { course_id } = useParams();
-  const COURSES_API = "http://localhost:4000/api/courses";
+  const COURSES_API = `${API_BASE}/api/courses`;
 
   const retrieveCourse = useCallback(async () => {
     const response = await axios.get(`${COURSES_API}/${course_id}`);
     dispatch(setCourse(response.data));
-  }, [course_id, dispatch]);
+  }, [COURSES_API, course_id, dispatch]);
 
   useEffect(() => {
     retrieveCourse();

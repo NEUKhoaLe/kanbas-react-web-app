@@ -34,15 +34,15 @@ function Kanbas() {
   );
 
   const dispatch = useDispatch();
-
-  const COURSES_API = "http://localhost:4000/api/courses";
+  const API_BASE = process.env.REACT_APP_API_BASE;
+  const COURSES_API = `${API_BASE}/api/courses`;
 
   const findAllCourses = useCallback(
     async function () {
       const response = await axios.get(COURSES_API);
       dispatch(setCourses(response.data));
     },
-    [dispatch],
+    [COURSES_API, dispatch],
   );
 
   useEffect(() => {
