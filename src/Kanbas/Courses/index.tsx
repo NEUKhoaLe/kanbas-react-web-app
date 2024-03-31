@@ -3,19 +3,32 @@ import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { courses } from "../Database";
 import { CourseNavigation } from "./Navigation/CourseNavigation";
 import { RightSideBar } from "./RightSideBar";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { KanbasState } from "../store";
+import axios from "axios";
+import { setCourse } from "../Dashboard/reducer";
 
 export const Courses = function () {
-  const { course_id } = useParams();
-  const courses = useSelector(
-    (state: KanbasState) => state.courseReducer.courses,
-  );
   const course = useSelector(
     (state: KanbasState) => state.courseReducer.course,
   );
+
+  const dispatch = useDispatch();
+
+  const { course_id } = useParams();
+  const COURSES_API = "http://localhost:4000/api/courses";
+
+  const retrieveCourse = useCallback(async () => {
+    const response = await axios.get(`${COURSES_API}/${course_id}`);
+    dispatch(setCourse(response.data));
+  }, [course_id, dispatch]);
+
+  useEffect(() => {
+    retrieveCourse();
+  }, [retrieveCourse]);
+
   const { pathname } = useLocation();
   const [showCourseNavigation, setShowCourseNavigation] = useState(true);
 

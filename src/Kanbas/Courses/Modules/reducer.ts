@@ -1,8 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { modules } from "../../Database";
 
-const initialState = {
-  modules: modules,
+export interface Modules {
+  name: string;
+  description: string;
+  _id: string;
+  course: string;
+}
+
+interface ModulesInitialState {
+  modules: Modules[];
+  module: Modules;
+}
+
+const initialState: ModulesInitialState = {
+  modules: [],
   module: {
     name: "New Module 123",
     description: "New Description",
@@ -15,6 +26,9 @@ const modulesSlice = createSlice({
   name: "modules",
   initialState,
   reducers: {
+    setModules: (state, action) => {
+      state.modules = action.payload;
+    },
     addModule: (state, action) => {
       state.modules = [
         {
@@ -47,6 +61,6 @@ const modulesSlice = createSlice({
   },
 });
 
-export const { addModule, deleteModule, updateModule, setModule } =
+export const { setModules, addModule, deleteModule, updateModule, setModule } =
   modulesSlice.actions;
 export default modulesSlice.reducer;
