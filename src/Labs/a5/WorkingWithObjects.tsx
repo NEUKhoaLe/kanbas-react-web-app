@@ -17,8 +17,8 @@ function WorkingWithObjects() {
     course: "CS 4550",
   });
 
-  const ASSIGNMENT_URL = "http://localhost:4000/a5/assignment";
-  const MODULE_URL = "http://localhost:4000/a5/module";
+  const ASSIGNMENT_URL = `http://${process.env.REACT_APP_API_BASE}/a5/assignment`;
+  const MODULE_URL = `http://${process.env.REACT_APP_API_BASE}/a5/module`;
 
   const fetchAssignment = async () => {
     const response = await axios.get(`${ASSIGNMENT_URL}`);
@@ -52,9 +52,13 @@ function WorkingWithObjects() {
       <button onClick={fetchAssignment}>Fetch Assignment</button>
 
       <h4>Retrieving Objects</h4>
-      <a href="http://localhost:4000/a5/assignment">Get Assignment</a>
+      <a href={`http://${process.env.REACT_APP_API_BASE}/a5/assignment`}>
+        Get Assignment
+      </a>
       <h4>Retrieving Properties</h4>
-      <a href="http://localhost:4000/a5/assignment/title">Get Title</a>
+      <a href={`http://${process.env.REACT_APP_API_BASE}/a5/assignment/title`}>
+        Get Title
+      </a>
       <h4>Modifying Properties</h4>
       <a href={`${ASSIGNMENT_URL}/title/${assignment.title}`}>Update Title</a>
       <input
