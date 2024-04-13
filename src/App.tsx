@@ -14,6 +14,9 @@ import { Modules } from "./Kanbas/Courses/Modules/Modules";
 import { Assignments } from "./Kanbas/Courses/Assignments";
 import { Grades } from "./Kanbas/Courses/Grades";
 import Assignment4 from "./Labs/a4";
+import Assignment5 from "./Labs/a5";
+import store from "./Kanbas/store";
+import { Provider } from "react-redux";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +36,10 @@ function App() {
         {
           path: "a4/*",
           element: <Assignment4 />,
+        },
+        {
+          path: "a5/*",
+          element: <Assignment5 />,
         },
       ],
     },
@@ -109,7 +116,11 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
 
 export default App;

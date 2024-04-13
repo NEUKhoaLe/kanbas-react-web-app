@@ -3,14 +3,20 @@ import "../index.css";
 import { FaCheckCircle, FaEdit, FaEllipsisV, FaPlus } from "react-icons/fa";
 import { ModuleSection } from "./ModuleSection";
 import { useSelector, useDispatch } from "react-redux";
-import { addModule, updateModule, setModule } from "./reducer";
+import { addModule, updateModule, setModule, setModules } from "./reducer";
 import { KanbasState } from "../../store";
+import { useEffect } from "react";
+import {
+  createModule,
+  findModulesForCourse,
+  updateModuleClient,
+} from "./client";
 
 interface Module {
   name: string;
   description: string;
   _id: string;
-  course_id: string;
+  course: string;
 }
 
 export const Modules = function () {
@@ -23,7 +29,26 @@ export const Modules = function () {
     (state: KanbasState) => state.modulesReducer.module,
   );
 
+  const handleUpdateModule = async () => {
+    const status = await updateModuleClient(module);
+    dispatch(updateModule(module));
+  };
+
   const dispatch = useDispatch();
+
+  const handleAddModule = () => {
+    createModule(course_id!, module).then((module) => {
+      dispatch(addModule(module));
+    });
+  };
+
+  useEffect(() => {
+    if (course_id) {
+      findModulesForCourse(course_id).then((modules) =>
+        dispatch(setModules(modules)),
+      );
+    }
+  }, [course_id, dispatch]);
 
   return (
     <div className={"col main-course-content"}>
@@ -61,7 +86,7 @@ export const Modules = function () {
             <button
               className="btn course-module-button"
               onClick={() => {
-                dispatch(addModule({ ...module, course: course_id }));
+                handleAddModule();
               }}
             >
               <FaPlus />
@@ -71,7 +96,7 @@ export const Modules = function () {
           {moduleList.find((item) => item._id === module._id) && (
             <button
               onClick={() => {
-                dispatch(updateModule(module));
+                handleUpdateModule();
               }}
               className="btn course-module-button"
             >

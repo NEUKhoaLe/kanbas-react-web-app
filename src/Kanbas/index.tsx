@@ -1,16 +1,25 @@
 import { HiddenKanbasNavigation, KanbasNavigation } from "./Navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./Dashboard/index.css";
 import { FaBars, FaChevronDown } from "react-icons/fa";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { HiddenCourseNavigation } from "./Courses/Navigation/CourseNavigation";
-import { courses } from "./Database";
-import store from "./store";
-import { Provider } from "react-redux";
+import store, { KanbasState } from "./store";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { setCourses } from "./Dashboard/reducer";
 
 interface Course {
   course_id: string;
   course_title: string;
+}
+
+export interface CourseType {
+  course_id: string;
+  filename: string;
+  title: string;
+  description: string;
+  "sub-body": string;
 }
 
 function Kanbas() {
@@ -20,18 +29,38 @@ function Kanbas() {
   const { pathname } = useLocation();
   const { course_id } = useParams();
 
+  const courses = useSelector(
+    (state: KanbasState) => state.courseReducer.courses,
+  );
+
+  const dispatch = useDispatch();
+  const API_BASE = process.env.REACT_APP_API_BASE;
+  const COURSES_API = `${API_BASE}/api/courses`;
+
+  const findAllCourses = useCallback(
+    async function () {
+      const response = await axios.get(COURSES_API);
+      dispatch(setCourses(response.data));
+    },
+    [COURSES_API, dispatch],
+  );
+
+  useEffect(() => {
+    findAllCourses();
+  }, [findAllCourses]);
+
   useEffect(() => {
     const course = courses.find((item) => item.course_id === course_id);
 
     if (course) {
       setTitle({ course_title: course.title, course_id: course.course_id });
     }
-  }, [course_id]);
+  }, [course_id, courses]);
 
   const topTitle = pathname.split("/")[pathname.split("/").length - 1];
 
   return (
-    <Provider store={store}>
+    <>
       <div
         className="navigation-row-small"
         style={{ display: `${isOpen ? `none` : ``}` }}
@@ -85,7 +114,7 @@ function Kanbas() {
         </div>
         <Outlet />
       </div>
-    </Provider>
+    </>
   );
 }
 

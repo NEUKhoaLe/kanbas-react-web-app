@@ -1,8 +1,13 @@
-import { courses } from "../Database";
 import { createSlice } from "@reduxjs/toolkit";
+import { CourseType } from "../index";
 
-const initialState = {
-  courses: courses,
+interface InitialStateTypes {
+  courses: CourseType[];
+  course: CourseType;
+}
+
+const initialState: InitialStateTypes = {
+  courses: [],
   course: {
     title: "New Course",
     description: "ENGW2100.39124.202430",
@@ -16,23 +21,16 @@ const courseSlice = createSlice({
   name: "courseReducer",
   initialState: initialState,
   reducers: {
-    addNewCourse: (state, action) => {
-      const newCourse = {
-        ...state.course,
-        course_id: new Date().getTime().toString(),
-      };
+    addCourse: (state, action) => {
+      state.courses = [...state.courses, action.payload];
+    },
 
-      state.courses = [...state.courses, { ...state.course, ...newCourse }];
+    setCourses: (state, action) => {
+      state.courses = action.payload;
     },
 
     setCourse: (state, action) => {
       state.course = action.payload;
-    },
-
-    deleteCourse: (state, action) => {
-      state.courses = state.courses.filter(
-        (course) => course.course_id !== action.payload,
-      );
     },
 
     updateCourse: (state, action) => {
@@ -47,7 +45,7 @@ const courseSlice = createSlice({
   },
 });
 
-export const { addNewCourse, updateCourse, deleteCourse, setCourse } =
+export const { updateCourse, addCourse, setCourse, setCourses } =
   courseSlice.actions;
 
 export default courseSlice.reducer;

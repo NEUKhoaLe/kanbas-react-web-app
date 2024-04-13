@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import { deleteModule, setModule } from "./reducer";
 import { useDispatch } from "react-redux";
+import * as client from "./client";
 
 interface ModuleSectionProps {
   item:
@@ -42,6 +43,12 @@ export const ModuleSection: React.FC<ModuleSectionProps> = function ({
 
   const dispatch = useDispatch();
 
+  const handleDeleteModule = (moduleId: string) => {
+    client.deleteModule(moduleId).then((status: string) => {
+      dispatch(deleteModule(moduleId));
+    });
+  };
+
   return (
     <div className={"week-row"} key={index}>
       <div className={"week-row-content"}>
@@ -71,7 +78,7 @@ export const ModuleSection: React.FC<ModuleSectionProps> = function ({
           />
           <FaTrash
             className={"main-content-right-icons trash-red"}
-            onClick={() => dispatch(deleteModule(item._id))}
+            onClick={() => handleDeleteModule(item._id)}
           />
         </div>
       </div>

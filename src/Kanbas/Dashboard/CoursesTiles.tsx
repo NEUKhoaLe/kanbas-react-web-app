@@ -3,8 +3,9 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import { FaBook } from "react-icons/fa";
 import React from "react";
-import { addNewCourse, setCourse, updateCourse, deleteCourse } from "./reducer";
+import { setCourse, setCourses } from "./reducer";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 interface Course {
   course_id: string;
@@ -19,6 +20,15 @@ interface CourseTilesProps {
 }
 
 export const CoursesTiles: React.FC<CourseTilesProps> = function ({ courses }) {
+  const API_BASE = process.env.REACT_APP_API_BASE;
+  const COURSES_API = `${API_BASE}/api/courses`;
+
+  const deleteCourse = async (course_id: string) => {
+    const response = await axios.delete(`${COURSES_API}/${course_id}`);
+
+    dispatch(setCourses(response.data));
+  };
+
   const dispatch = useDispatch();
   return (
     <div className={"container"}>
@@ -40,6 +50,7 @@ export const CoursesTiles: React.FC<CourseTilesProps> = function ({ courses }) {
                   <Link
                     to={`/Kanbas/Courses/${item.course_id}/Home`}
                     className={"card-anchor"}
+                    onClick={() => dispatch(setCourse(item))}
                   >
                     <p className={"card-title"}>{item.title}</p>
                     <p className={"description"}>
@@ -68,7 +79,7 @@ export const CoursesTiles: React.FC<CourseTilesProps> = function ({ courses }) {
                       className="delete-course-button"
                       onClick={(event) => {
                         event.preventDefault();
-                        dispatch(deleteCourse(item.course_id));
+                        deleteCourse(item.course_id);
                       }}
                     >
                       Delete

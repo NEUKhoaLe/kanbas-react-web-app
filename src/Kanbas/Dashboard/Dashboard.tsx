@@ -4,7 +4,9 @@ import { CoursesTiles } from "./CoursesTiles";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { KanbasState } from "../store";
-import { addNewCourse, setCourse, updateCourse } from "./reducer";
+import { addCourse, setCourse, setCourses } from "./reducer";
+import axios from "axios";
+import { CourseType } from "../index";
 
 export const Dashboard = function () {
   const courses = useSelector(
@@ -14,7 +16,30 @@ export const Dashboard = function () {
   const course = useSelector(
     (state: KanbasState) => state.courseReducer.course,
   );
+
   const dispatch = useDispatch();
+
+  const API_BASE = process.env.REACT_APP_API_BASE;
+  const COURSES_API = `${API_BASE}/api/courses`;
+
+  const addC = async (course: CourseType) => {
+    const newCourse = {
+      ...course,
+      course_id: new Date().getTime().toString(),
+    };
+    const response = await axios.post(COURSES_API, newCourse);
+
+    dispatch(addCourse(response.data));
+  };
+
+  const updateC = async (course: CourseType) => {
+    const response = await axios.patch(
+      `${COURSES_API}/${course.course_id}`,
+      course,
+    );
+
+    dispatch(setCourses(response.data));
+  };
 
   return (
     <div className={"col dashboard-col"}>
@@ -60,7 +85,7 @@ export const Dashboard = function () {
             <button
               className="btn add-course-button"
               onClick={() => {
-                dispatch(addNewCourse(course));
+                addC(course);
               }}
             >
               <FaPlus className="add-course-button-plus" />
@@ -71,7 +96,7 @@ export const Dashboard = function () {
             <button
               className="btn add-course-button"
               onClick={() => {
-                dispatch(updateCourse(course));
+                updateC(course);
               }}
             >
               Edit Course
