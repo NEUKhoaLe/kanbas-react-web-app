@@ -2,10 +2,16 @@ import { HiddenKanbasNavigation, KanbasNavigation } from "./Navigation";
 import { useCallback, useEffect, useState } from "react";
 import "./Dashboard/index.css";
 import { FaBars, FaChevronDown } from "react-icons/fa";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { HiddenCourseNavigation } from "./Courses/Navigation/CourseNavigation";
-import store, { KanbasState } from "./store";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { KanbasState } from "./store";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setCourses } from "./Dashboard/reducer";
 
@@ -23,6 +29,17 @@ export interface CourseType {
 }
 
 function Kanbas() {
+  const navigate = useNavigate();
+  const { user } = useSelector((state: KanbasState) => state.userReducer);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/Kanbas/Account/Profile");
+    } else {
+      navigate("/Kanbas/Account/Signin");
+    }
+  }, [navigate, user]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [courseNavIsOpen, setCourseNavIsOpen] = useState(false);
   const [title, setTitle] = useState<Course | null>(null);

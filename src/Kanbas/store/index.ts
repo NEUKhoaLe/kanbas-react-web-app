@@ -11,11 +11,16 @@ export interface KanbasState {
     course: any;
     courses: any[];
   };
+
+  userReducer: {
+    user: any;
+  };
 }
 const store = configureStore({
   reducer: {
     modulesReducer,
     courseReducer,
+    userReducer,
   },
 });
 

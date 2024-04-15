@@ -1,0 +1,17 @@
+.account-body {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.signin-inputs {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.signin-h1 {
+    text-align: center;
+}

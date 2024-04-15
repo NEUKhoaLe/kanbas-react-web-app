@@ -17,6 +17,10 @@ import Assignment4 from "./Labs/a4";
 import Assignment5 from "./Labs/a5";
 import store from "./Kanbas/store";
 import { Provider } from "react-redux";
+import Signin from "./Users/Signin";
+import Account from "./Kanbas/Account";
+import Profile from "./Users/Profile";
+import UserTable from "./Users/Table";
 
 function App() {
   const router = createBrowserRouter([
@@ -51,6 +55,24 @@ function App() {
         {
           path: "Dashboard",
           element: <Dashboard />,
+        },
+        {
+          path: "Account/",
+          element: <Account />,
+          children: [
+            {
+              path: "Signin",
+              element: <Signin />,
+            },
+            {
+              path: "Profile",
+              element: <Profile />,
+            },
+            {
+              path: "Admin/Users",
+              element: <UserTable />,
+            },
+          ],
         },
         {
           path: "/Kanbas/Courses/:course_id/",
@@ -93,12 +115,6 @@ function App() {
               element: <Navigate to={"Home"} />,
             },
           ],
-        },
-        {
-          path: "Account",
-          element: (
-            <h1 style={{ marginLeft: "116px", paddingTop: "8px" }}>Account</h1>
-          ),
         },
         {
           path: "*",

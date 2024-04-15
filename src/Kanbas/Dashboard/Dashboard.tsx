@@ -1,7 +1,6 @@
 import "./index.css";
 import { FaEllipsisV, FaPlus } from "react-icons/fa";
 import { CoursesTiles } from "./CoursesTiles";
-import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { KanbasState } from "../store";
 import { addCourse, setCourse, setCourses } from "./reducer";
