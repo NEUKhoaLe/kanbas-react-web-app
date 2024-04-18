@@ -18,6 +18,11 @@ export default function Signup() {
       setError(err.response.data.message);
     }
   };
+
+  const handleSignin = function () {
+    navigate("/Kanbas/Account/Signin");
+  };
+
   return (
     <div>
       <h1>Signup</h1>
@@ -40,7 +45,8 @@ export default function Signup() {
           })
         }
       />
-      <button onClick={signup}> Signup </button>
+      <button onClick={signup}> Signup</button>
+      <button onClick={() => handleSignin()}>Go to Sign in</button>
     </div>
   );
 }

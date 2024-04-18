@@ -21,6 +21,7 @@ import Signin from "./Users/Signin";
 import Account from "./Kanbas/Account";
 import Profile from "./Users/Profile";
 import UserTable from "./Users/Table";
+import Signup from "./Users/Signup";
 
 function App() {
   const router = createBrowserRouter([
@@ -55,6 +56,10 @@ function App() {
         {
           path: "Signin",
           element: <Signin />,
+        },
+        {
+          path: "Signup",
+          element: <Signup />,
         },
       ],
     },
