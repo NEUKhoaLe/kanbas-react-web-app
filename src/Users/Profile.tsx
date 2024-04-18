@@ -25,7 +25,6 @@ export default function Profile() {
   const { user } = useSelector((state: KanbasState) => state.usersReducer);
 
   useEffect(() => {
-    console.log(user);
     if (user) {
       fetchProfile();
     }
