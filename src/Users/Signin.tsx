@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "./client";
 import * as client from "./client";
 import "../Kanbas/Account/index.css";
 import { setUser } from "./UsersReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { KanbasState } from "../Kanbas/store";
 export default function Signin() {
   const [credentials, setCredentials] = useState<User>({
     _id: "",
@@ -16,10 +17,22 @@ export default function Signin() {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { user } = useSelector((state: KanbasState) => state.usersReducer);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/Kanbas/Account/Profile");
+    }
+  }, [navigate, user]);
+
   const signIn = async () => {
-    const user = await client.signin(credentials);
-    dispatch(setUser(user));
-    navigate("/Kanbas/Account/Profile");
+    try {
+      const user = await client.signin(credentials);
+      dispatch(setUser(user));
+    } catch (e) {
+      console.log("Wrong credentials.");
+    }
   };
 
   const handleSignup = function () {

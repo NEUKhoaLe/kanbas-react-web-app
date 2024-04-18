@@ -1,0 +1,15 @@
+.profile-parent {
+    display: grid;
+    margin: auto;
+    padding: 80px 80px 80px 160px;
+}
+
+.profile-body {
+    display: grid;
+    grid-gap: 10px;
+    text-align: center;
+}
+
+.user-table {
+    margin: 80px 80px 40px 160px;
+}

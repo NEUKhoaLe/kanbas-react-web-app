@@ -6,6 +6,8 @@ import { KanbasState } from "../store";
 import { addCourse, setCourse, setCourses } from "./reducer";
 import axios from "axios";
 import { CourseType } from "../index";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = function () {
   const courses = useSelector(
@@ -15,6 +17,16 @@ export const Dashboard = function () {
   const course = useSelector(
     (state: KanbasState) => state.courseReducer.course,
   );
+
+  const { user } = useSelector((state: KanbasState) => state.usersReducer);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/Kanbas/Account/Signin");
+    }
+  }, [navigate, user]);
 
   const dispatch = useDispatch();
 

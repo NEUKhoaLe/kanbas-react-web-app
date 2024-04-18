@@ -2,7 +2,9 @@ import * as client from "./client";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "./UsersReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import "./index.css";
+import { KanbasState } from "../Kanbas/store";
 export default function Profile() {
   const [profile, setProfile] = useState({
     username: "",
@@ -19,25 +21,35 @@ export default function Profile() {
     const account = await client.profile();
     setProfile(account);
   };
+
+  const { user } = useSelector((state: KanbasState) => state.usersReducer);
+
   useEffect(() => {
-    fetchProfile();
-  }, []);
+    console.log(user);
+    if (user) {
+      fetchProfile();
+    }
+  }, [user]);
 
   const save = async () => {
     await client.updateUser(profile);
   };
 
   const signout = async () => {
-    await client.signout();
     dispatch(setUser(null));
+    await client.signout();
     navigate("/Kanbas/Account/Signin");
   };
 
+  const allUsers = async () => {
+    navigate("/Kanbas/Account/Admin/Users");
+  };
+
   return (
-    <div>
+    <div className={"profile-parent"}>
       <h1>Profile</h1>
       {profile && (
-        <div>
+        <div className={"profile-body"}>
           <input
             value={profile.username}
             onChange={(e) =>
@@ -82,6 +94,7 @@ export default function Profile() {
 
           <button onClick={save}>Save</button>
           <button onClick={signout}>Sign out</button>
+          <button onClick={allUsers}>All Users</button>
         </div>
       )}
     </div>

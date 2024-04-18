@@ -48,6 +48,17 @@ function App() {
       ],
     },
     {
+      path: "/Kanbas/Account",
+      element: <Account />,
+      children: [
+        { index: true, element: <Navigate to="Profile" replace /> },
+        {
+          path: "Signin",
+          element: <Signin />,
+        },
+      ],
+    },
+    {
       path: "/Kanbas/",
       element: <Kanbas />,
       children: [
@@ -57,22 +68,12 @@ function App() {
           element: <Dashboard />,
         },
         {
-          path: "Account/",
-          element: <Account />,
-          children: [
-            {
-              path: "Signin",
-              element: <Signin />,
-            },
-            {
-              path: "Profile",
-              element: <Profile />,
-            },
-            {
-              path: "Admin/Users",
-              element: <UserTable />,
-            },
-          ],
+          path: "Account/Profile",
+          element: <Profile />,
+        },
+        {
+          path: "Account/Admin/Users",
+          element: <UserTable />,
         },
         {
           path: "/Kanbas/Courses/:course_id/",

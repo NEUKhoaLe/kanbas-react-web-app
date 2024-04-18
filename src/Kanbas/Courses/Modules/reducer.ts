@@ -33,7 +33,6 @@ const modulesSlice = createSlice({
       state.modules = [
         {
           ...action.payload,
-          _id: new Date().getTime().toString(),
         },
         ...state.modules,
       ];

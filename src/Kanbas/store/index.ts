@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import modulesReducer from "../Courses/Modules/reducer";
 import courseReducer from "../Dashboard/reducer";
+import usersReducer from "../../Users/UsersReducer";
 export interface KanbasState {
   modulesReducer: {
     modules: any[];
@@ -12,7 +13,7 @@ export interface KanbasState {
     courses: any[];
   };
 
-  userReducer: {
+  usersReducer: {
     user: any;
   };
 }
@@ -20,7 +21,7 @@ const store = configureStore({
   reducer: {
     modulesReducer,
     courseReducer,
-    userReducer,
+    usersReducer,
   },
 });
 

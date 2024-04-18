@@ -29,22 +29,21 @@ export interface CourseType {
 }
 
 function Kanbas() {
-  const navigate = useNavigate();
-  const { user } = useSelector((state: KanbasState) => state.userReducer);
-
-  useEffect(() => {
-    if (user) {
-      navigate("/Kanbas/Account/Profile");
-    } else {
-      navigate("/Kanbas/Account/Signin");
-    }
-  }, [navigate, user]);
-
   const [isOpen, setIsOpen] = useState(false);
   const [courseNavIsOpen, setCourseNavIsOpen] = useState(false);
   const [title, setTitle] = useState<Course | null>(null);
   const { pathname } = useLocation();
   const { course_id } = useParams();
+
+  const { user } = useSelector((state: KanbasState) => state.usersReducer);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/Kanbas/Account/Signin");
+    }
+  }, [navigate, user]);
 
   const courses = useSelector(
     (state: KanbasState) => state.courseReducer.courses,
@@ -63,8 +62,10 @@ function Kanbas() {
   );
 
   useEffect(() => {
-    findAllCourses();
-  }, [findAllCourses]);
+    if (user) {
+      findAllCourses();
+    }
+  }, [user, findAllCourses]);
 
   useEffect(() => {
     const course = courses.find((item) => item.course_id === course_id);

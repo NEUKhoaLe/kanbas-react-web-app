@@ -1,6 +1,11 @@
 import "./index.css";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import { courses } from "../Database";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { CourseNavigation } from "./Navigation/CourseNavigation";
 import { RightSideBar } from "./RightSideBar";
 import { useCallback, useEffect, useState } from "react";
@@ -18,6 +23,16 @@ export const Courses = function () {
   const dispatch = useDispatch();
   const API_BASE = process.env.REACT_APP_API_BASE;
 
+  const { user } = useSelector((state: KanbasState) => state.usersReducer);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/Kanbas/Account/Signin");
+    }
+  }, [navigate, user]);
+
   const { course_id } = useParams();
   const COURSES_API = `${API_BASE}/api/courses`;
 
@@ -27,8 +42,10 @@ export const Courses = function () {
   }, [COURSES_API, course_id, dispatch]);
 
   useEffect(() => {
-    retrieveCourse();
-  }, [retrieveCourse]);
+    if (user) {
+      retrieveCourse();
+    }
+  }, [user, retrieveCourse]);
 
   const { pathname } = useLocation();
   const [showCourseNavigation, setShowCourseNavigation] = useState(true);

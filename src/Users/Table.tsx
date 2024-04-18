@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { BsTrash3Fill, BsPlusCircleFill } from "react-icons/bs";
 import * as client from "./client";
 import { User } from "./client";
+import { useSelector } from "react-redux";
+import { KanbasState } from "../Kanbas/store";
+import "./index.css";
 export default function UserTable() {
   const [users, setUsers] = useState<User[]>([]);
   const [user, setUser] = useState<User>({
@@ -36,11 +39,17 @@ export default function UserTable() {
     setUsers(users);
   };
 
+  const { user: loggedIn } = useSelector(
+    (state: KanbasState) => state.usersReducer,
+  );
+
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    if (loggedIn) {
+      fetchUsers();
+    }
+  }, [loggedIn]);
   return (
-    <div>
+    <div className={"user-table"}>
       <h1>User Table</h1>
       <table className="table">
         <thead>
@@ -54,16 +63,19 @@ export default function UserTable() {
           <tr>
             <td>
               <input
-                value={user.password}
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
-              />
-              <input
+                placeholder={"Enter Username"}
                 value={user.username}
                 onChange={(e) => setUser({ ...user, username: e.target.value })}
+              />
+              <input
+                placeholder={"Enter Password"}
+                value={user.password}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </td>
             <td>
               <input
+                placeholder={"Enter First Name"}
                 value={user.firstName}
                 onChange={(e) =>
                   setUser({ ...user, firstName: e.target.value })
@@ -72,6 +84,7 @@ export default function UserTable() {
             </td>
             <td>
               <input
+                placeholder={"Enter Last Name"}
                 value={user.lastName}
                 onChange={(e) => setUser({ ...user, lastName: e.target.value })}
               />
@@ -99,11 +112,13 @@ export default function UserTable() {
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td>{user.role}</td>
-              <td>
-                <button onClick={() => deleteUser(user)}>
-                  <BsTrash3Fill />
-                </button>
-              </td>
+              {loggedIn._id !== user._id && (
+                <td>
+                  <button onClick={() => deleteUser(user)}>
+                    <BsTrash3Fill />
+                  </button>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>
